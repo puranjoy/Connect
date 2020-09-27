@@ -5,9 +5,9 @@ import './Footer.css';
 class Footer extends React.Component {
     Copyright = () => {
         return (
-            <h2 variant="body2" color="textSecondary" align="center">
+            <h2 variant="small-caps" color="textSecondary" align="center">
                 {'CopyRight @'}
-                {'Coding Cafe'}
+                {'Puranjoy Saha'}
                 {new Date().getFullYear()}
                 {'.'}
             </h2>
@@ -15,11 +15,11 @@ class Footer extends React.Component {
     };
     render() {
         return (
-            <Footer>
-                <div class="footer 1-box is-center">
+            <footer>
+                <div className="footer 1-box is-center">
                     {this.Copyright()}
                 </div>
-            </Footer>
+            </footer>
         )
     };
 };

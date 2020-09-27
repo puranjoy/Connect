@@ -10,8 +10,8 @@ function Header() {
                 <h1><a href="/">Chat<span>Connect</span></a></h1>
                 <nav>
                     <Link to="/"> Home</Link>
-                    <a class="selected" href=""><Link to="/">About App</Link></a>
-                    <a><Link to="/">Contact Us</Link></a>
+                    <Link to="/">About App</Link>
+                    <Link to="/">Contact Us</Link>
                 </nav>
 
                 <ul>
