@@ -41,6 +41,7 @@ export default class Signup extends Component {
                             email,
                             password,
                             URL: '',
+                            description: '',
                             messages: [{ notificationId: "", number: 0 }]
                         }).then((docRef) => {
                             localStorage.setItem(LoginString.ID, result.user.uid);
@@ -94,7 +95,7 @@ export default class Signup extends Component {
                     </div>
                     <div>
                         <Link to="/">
-                            <button className="btn"><i class="fa fa-home">WebChat</i></button>
+                            <button className="btn"><i className="fa fa-home">WebChat</i></button>
                         </Link>
                     </div>
                 </Card>
