@@ -5,6 +5,8 @@ import './Chat.css'
 import ReactLoading from 'react-loading'
 import { firestore } from 'firebase'
 import images from '../../projectimages/ProjectImages';
+import ChatBox from '../chatbox/ChatBox'
+import WelcomeBoard from '../welcome/Welcome'
 
 export default class Chat extends React.Component {
     constructor(props) {
@@ -252,6 +254,16 @@ export default class Chat extends React.Component {
                         </div>
                         {this.state.displayedContacts}
                     </div>
+                    <div className="viewBoard">
+                        {this.state.currentPeerUser ? (
+                            <ChatBox currentPeerUser={this.state.currentPeerUser}
+                                showToast={this.props.showToast}
+                            />) : (<WelcomeBoard
+                                currentUserName={this.currentUserName}
+                                currentUserPhoto={this.currentUserPhoto} />
+                            )}
+                    </div>
+
                 </div>
             </div>
         )
