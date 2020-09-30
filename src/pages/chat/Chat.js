@@ -4,6 +4,8 @@ import firebase from "../../service/firebase"
 import './Chat.css'
 import ReactLoading from 'react-loading'
 import { firestore } from 'firebase'
+import images from '../../projectimages/ProjectImages';
+
 export default class Chat extends React.Component {
     constructor(props) {
         super(props)
@@ -162,7 +164,70 @@ export default class Chat extends React.Component {
             console.log("No user is present")
         }
     }
+    searchHandler = (event) => {
+        let searchQuery = event.target.value.toLowerCase(),
+            displayedContacts = this.searchUsers.filter((el) => {
+                let SearchValue = el.name.toLowerCase();
+                return SearchValue.indexOf(searchQuery) !== -1;
+            })
+        this.displayedContacts = displayedContacts
+        this.displaySearchedContacts()
+    }
+    displaySearchedContacts = () => {
+        if (this.searchUsers.length > 0) {
+            let viewListUser = []
+            let classname = ''
+            this.displayedContacts.map((item) => {
+                if (item.id != this.currentUserId) {
+                    classname = this.getClassnameforUserandNotification(item.id)
+                    viewListUser.push(
 
+                        <button
+
+                            id={item.key}
+
+                            className={classname}
+
+                            onClick={() => {
+                                this.notificationErase(item.id)
+                                this.setState({
+                                    currentPeerUser: item,
+                                    displayedContactswithNotification: this.notificationMessagesErase
+                                })
+                                document.getElementById(item.key).style.backgroundColor = "#fff"
+                                if (document.getElementById(item.key)) {
+                                    document.getElementById(item.key).style.color = '#fff'
+                                }
+                            }}
+                        >
+                            <img
+                                className="viewAvatarItem"
+                                src={item.URL}
+                                alt=""
+                                placeholder={images.emptyphoto}
+                            />
+
+                            <div className="viewWrapContentItem">
+                                <span className="textItem">{`Name: ${item.name
+                                    }`}</span>
+                            </div>
+                            {classname === 'viewWrapItemNotification' ?
+                                <div className='notificationpragraph'>
+                                    <p id={item.key} className="newmessages">New messages</p>
+                                </div> : null}
+                        </button>
+                    )
+                }
+
+            })
+            this.setState({
+                displayedContacts: viewListUser
+            });
+
+        } else {
+            console.log("No user is present")
+        }
+    }
     render() {
         return (
             <div className="root">
@@ -174,6 +239,16 @@ export default class Chat extends React.Component {
                                 src={this.currentUserPhoto}
                                 onClick={this.onProfileClick} />
                             <button className="Logout" onClick={this.logout}>Logout</button>
+                        </div>
+                        <div className="rootsearchbar">
+                            <div className="input-container">
+                                <i className="fa fa-search icon"></i>
+                                <input class="input-field"
+                                    type="text"
+                                    onChange={this.searchHandler}
+                                    placeholder="Search"
+                                />
+                            </div>
                         </div>
                         {this.state.displayedContacts}
                     </div>
