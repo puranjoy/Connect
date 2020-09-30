@@ -97,8 +97,8 @@ export default class Login extends React.Component {
                             />
                         </div>
                         <Link to="/">
-                            <button class="btn">
-                                <i class="fa fa-home"></i>
+                            <button className="btn">
+                                <i className="fa fa-home"></i>
                                 Webchat
                             </button>
                         </Link>

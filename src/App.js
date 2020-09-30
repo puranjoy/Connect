@@ -10,6 +10,7 @@ import Home from './pages/home/Home';
 import Signup from './pages/signup/Signup';
 import Login from './pages/login/Login';
 import Chat from './pages/chat/Chat'
+import Profile from './pages/profile/Profile'
 import firebase from './service/firebase';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -49,6 +50,10 @@ class App extends Component {
           <Route
             path="/chat"
             render={props => <Chat showToast={this.showToast} {...props} />} />
+          <Route
+            path="/profile"
+            render={props => <Profile showToast={this.showToast} {...props} />} />
+
 
 
         </Switch>
