@@ -19,7 +19,6 @@ export default class Login extends React.Component {
         super(props);
         this.state = {
             isLoading: true,
-            error: "",
             email: "",
             password: ""
         }
@@ -45,7 +44,6 @@ export default class Login extends React.Component {
     }
     async handleSubmit(event) {
         event.preventDefault();
-        this.setState({ error: "" });
 
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(async result => {
@@ -69,9 +67,8 @@ export default class Login extends React.Component {
                     this.props.history.push('/chat')
                 }
             }).catch(function (error) {
-                this.setState({
-                    error: "Error logining in"
-                })
+                document.getElementById('1').innerHTML = "incorrect email/password"
+
             })
 
     }
@@ -148,6 +145,11 @@ export default class Login extends React.Component {
                                 <button class="button1" type="submit">
                                     <span>Login</span>
                                 </button>
+                            </div>
+                            <div>
+                                <div className="error">
+                                    <p id='1' style={{ color: 'red' }}></p>
+                                </div>
                             </div>
 
                             <div className="CenterAligningItems">
