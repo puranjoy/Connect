@@ -116,7 +116,7 @@ export default class Profile extends React.Component {
                     <img
                         className="imgInputFile"
                         alt="icon gallery"
-                        src={images.choosefile}
+                        src={images.camera}
                         onClick={() => { this.refInput.click() }}
                     />
                     <input
