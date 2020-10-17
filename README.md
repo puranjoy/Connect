@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live App
+See the live demo of the app at: [ChatConnect](https://chatapp-35a03.web.app)
 ## Available Scripts
 
 In the project directory, you can run:
